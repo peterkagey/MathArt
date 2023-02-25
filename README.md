@@ -11,3 +11,8 @@
 
 ## Truchet
 ![Truchet tiles on a truncated square tiling](truchet_wall_art/LaTeX/truncated_square.png)
+
+## Birdzier
+Making bird like objects with Bezier curves (on Bezier curves (on Bezier curves)).
+![Bezier curve bird #1](birdzier/examples/example6.png)
+![Bezier curve bird #2](birdzier/examples/example8.png)

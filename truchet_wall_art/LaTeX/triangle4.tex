@@ -1,0 +1,52 @@
+\documentclass[tikz]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{positioning,fadings,through}
+\pgfmathsetmacro{\n}{6}
+\definecolor{topBackground} {HTML}{FFFFFF} %{00FFFF}
+\definecolor{bottomBackground} {HTML}{FFFFFF} %{FFFF00}
+\definecolor{topLine1} {HTML}{000000}%{0000FF}
+\definecolor{bottomLine1} {HTML}{000000}%{FF0000}
+\definecolor{topLine2} {HTML}{000000}%{00FF00}
+\definecolor{bottomLine2} {HTML}{000000}%{FF00FF}
+\begin{document}
+  \begin{tikzpicture}
+    \clip (0.8,0) rectangle +(4*1.1, 11.10/2.04*1.1);
+    % \fill[top color=topBackground, bottom color=bottomBackground] (1,0) rectangle +(4, 11.10/2.04);
+    \foreach \b [
+      evaluate={\amin using int(-\b/2)},
+      evaluate={\amax using int(\n-\b/2)},
+      evaluate={\c using 100*\b/\n}
+    ] in {0,...,\n} {
+      \foreach \a [
+        evaluate={\x using \a+\b/2},
+        evaluate={\y using \b*sqrt(3)/2},
+        evaluate={\r using random(0,3)},
+        evaluate={\s using random(0,2)}
+        % evaluate{\b as \a using \b*sqrt(3)}
+        % evaluate{\y as \a using \a+\y/2}
+      ] in {\amin,...,\amax} {
+        \ifnum \s=3 {
+          \draw[blue!\c!magenta, line width=3]
+            (\x+1, {\y+sqrt(3)/2}) arc (0:-60:0.5)
+            (\x+1, {\y+sqrt(3)/2}) arc (180:240:0.5)
+            (\x+3/4,{\y+sqrt(3)/4}) arc (120:60:0.5)
+          ;
+          \draw[blue!\c!magenta, line width=3]
+            (\x+0.5,\y) arc (0:60:0.5)
+            (\x+0.5,\y) arc (180:120:0.5)
+            (\x+0.25,{\y+sqrt(3)/4}) arc (240:300:0.5)
+          ;
+        } \else {
+          \draw[topLine1!\c!bottomLine1, line width=3, rotate around={120*\s:(\x+1,{\y+sqrt(3)/3})}]
+            (\x+1, {\y+sqrt(3)/2}) arc (0:-60:0.5)
+            (\x+1, {\y+sqrt(3)/2}) arc (180:240:0.5)
+          ;
+          \draw[topLine2!\c!bottomLine2, line width=3, rotate around={120*\r:(\x+0.5,{\y+sqrt(3)/6})}]
+            (\x+0.5,\y) arc (0:60:0.5)
+            (\x+0.5,\y) arc (180:120:0.5)
+          ;
+        } \fi
+      }
+    }
+  \end{tikzpicture}
+\end{document}

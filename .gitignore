@@ -1,5 +1,6 @@
 random_circles_wall_art/animations
-truchet_wall_art/Photoshop
 birdzier/tmp
 *.ai
 *.psd
+*/__pycache__
+truchet/truchet_python/old_tilings

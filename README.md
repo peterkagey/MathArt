@@ -10,7 +10,7 @@
 ![Iterative process of drawing triangle centers in a square](triangle_center_fractal/x244_colored.png "Kimberling's X(244)")
 
 ## Truchet
-![Truchet tiles on a truncated square tiling](truchet_wall_art/LaTeX/truncated_square.png)
+![Truchet tiles on a truncated trihexagonal tiling](truchet/truchet_wall_art/Photoshop/truncated_trihexagonal_gradient.png)
 
 ## Birdzier
 Making bird like objects with Bezier curves (on Bezier curves (on Bezier curves)).

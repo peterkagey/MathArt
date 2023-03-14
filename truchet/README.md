@@ -1,5 +1,5 @@
 ### Elongated Triangular
-![](truchet/truchet_python/images/elongated_triangular.png)
+![](truchet_python/images/elongated_triangular.png)
 
 ### Hexagonal
 ![](truchet/truchet_python/images/hexagonal.png)

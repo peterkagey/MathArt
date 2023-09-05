@@ -3,13 +3,13 @@ import random
 import os
 
 class PatternDrawer():
-  def __init__(self, trilinear_function, size=8000):
+  def __init__(self, barycenter_function, size=8000):
     self.width = size
     self.height = size
     self.vertices = [(0,0), (0,self.height-1),(self.width-1,self.height-1),(self.width,0)]
     self.img = Image.new("RGB", (self.width, self.height), (0,0,0))
     self.draw = ImageDraw.Draw(self.img)
-    self.center_function = trilinear_function
+    self.center_function = barycenter_function
 
   def draw_at(self, pt, radius = None, color=None, opacity=0.5):
     s = radius or 5
@@ -96,5 +96,5 @@ class PatternDrawer():
       last_side = next_side
       self.draw_at((x,y), radius, color=color, opacity=opacity)
     current_directory = os.path.dirname(os.path.realpath(__file__))
-    filepath = current_directory + "/frames/tmp/frame_" + image_name + ".png"
+    filepath = current_directory + "/frames/tmp/x11/frame_" + image_name + ".png"
     self.img.resize((2160,2160)).save(filepath)

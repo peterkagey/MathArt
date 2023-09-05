@@ -47,17 +47,20 @@ class VideoBuilder():
       return math.prod(parts)
     return f
 
-  def make_frames(self, number_of_points=10_000, radius=10, opacity=0.25):
+  def make_frames(self, number_of_points=10_000, radius=10, opacity=0.25, print_progress=False):
     color_paths = [self.get_color_path() for _ in range(4)]
     def current_color(i):
       return [color_paths[j][i] for j in range(4)]
+    padding = len(str(self.frame_count))
     for i in range(self.frame_count):
-      trilinear_function = self.triangle_center(self.parameter_step_points[i])
-      PatternDrawer(trilinear_function) \
+      barycenter_function = self.triangle_center(self.parameter_step_points[i])
+      PatternDrawer(barycenter_function) \
         .draw_image(
           current_color(i),
           number_of_points=number_of_points,
           radius=radius,
           opacity=opacity,
-          image_name=str(i)
+          image_name=str(i).rjust(padding, "0")
         )
+      if print_progress:
+        print("Frame " + str(i).rjust(4, "0") + "/" + str(self.frame_count), end="\r")
